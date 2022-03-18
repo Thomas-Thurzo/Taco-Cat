@@ -5,30 +5,46 @@ function startFunktion(){
     // Einlesen des Wortes
     let eingabeText = document.getElementById("eingabeText").value;
 
+    // Check ob etwas eingeben wurde
+    if (eingabeText != ""){
+         // Aufrufen der Logik Funktion 
     let ergebnis = logikFunktion(eingabeText);
-    displayFunktion(ergebnis);
 
+        // Aufrufen der Display Funktion
+        displayFunktion(ergebnis);
+    }  
+    else{
+        alert("Bitte ein Wort eingeben!");
+    }
 }
 
 // Logik Funktion, Check ob die Eingabe ein Palindrom ist
 function logikFunktion(eingabeText){
 
-    let ergebnis = "Es handelt sich bei diesem Wort um kein Palindrom!";
+    // Variablen
+    let ergebnis = "Es handelt sich bei dem Wort " + eingabeText + " um kein Palindrom!";
     let wortReverse = "";
+    let regex = /[^a-z0-9]/gi;
 
+    // Entfernen von Sonderzeichen und Leerzeichen
+    eingabeText = eingabeText.replace(regex,"");
+
+    // Das Wort umdrehen
     for (let index = eingabeText.length - 1; index >= 0; index--) {
         wortReverse = wortReverse + eingabeText[index];      
     }
 
-    eingabeText = eingabeText.toUpperCase();
-    wortReverse = wortReverse.toUpperCase();
+    // Alle Buchstaben zu Großbuchstaben umwandeln
+    eingabeText = eingabeText.toLowerCase();
+    wortReverse = wortReverse.toLowerCase();
 
-    if(eingabeText == wortReverse && eingabeText != ""){
-        ergebnis = "Das Wort ist ein Palindrom!"
+    // Überprüfung auf Gleicheit
+    if(eingabeText == wortReverse){
+        ergebnis = "Das Wort " + eingabeText + " ist ein Palindrom!"
     }
 
+    // Rückgabe des Ergebnises
     return ergebnis;
-
 }
 
 // Display Funktion
