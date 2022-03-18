@@ -1,3 +1,3 @@
-# MiniSiteTemplate
+# TACO Cat
 
-Website Template für JavaScript Projekte.
+Eine JavaScript Übung.
